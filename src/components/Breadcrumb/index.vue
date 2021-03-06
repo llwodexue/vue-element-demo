@@ -1,11 +1,8 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group>
-      <el-breadcrumb-item
-        v-for="(item, index) in levelList"
-        :key="index"
-      >
-        <span class="item-breadcrumb">{{item}}</span>
+      <el-breadcrumb-item v-for="(item, index) in levelList" :key="index">
+        <span class="item-breadcrumb">{{ item }}</span>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -16,7 +13,7 @@ export default {
   name: "Hamburger",
   data() {
     return {
-      levelList: [1, 2, 3],
+      levelList: [1, 2, 3, 4],
     };
   },
   props: {

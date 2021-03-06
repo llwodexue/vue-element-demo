@@ -1,40 +1,42 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import logger from "vuex/dist/logger";
-import * as types from "./store-types";
-import Cookies from "js-cookie";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import logger from 'vuex/dist/logger'
+import * as types from './store-types'
+import Cookies from 'js-cookie'
+import variable from '@/styles/variable.less'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {},
   state: {
-    opened: Cookies.get("sidebarStatus")
-      ? !!Cookies.get("sidebarStatus")
+    opened: Cookies.get('sidebarStatus')
+      ? !!Cookies.get('sidebarStatus')
       : false,
     isLogin: false,
-    power: "",
+    power: '',
   },
   mutations: {
     [types.TOGGLE_SIDEBAR]: (state) => {
-      state.opened = !state.opened;
-      console.log(Cookies.get("sidebarStatus"));
+      state.opened = !state.opened
       if (state.opened) {
-        Cookies.set("sidebarStatus", 1);
+        variable.sideBarWidth = '65px'
+        Cookies.set('sidebarStatus', 1)
       } else {
-        Cookies.set("sidebarStatus", 0);
+        variable.sideBarWidth = '210px'
+        Cookies.set('sidebarStatus', 0)
       }
     },
   },
   actions: {
     [types.TOGGLE_SIDEBAR]({ commit }) {
-      commit(types.TOGGLE_SIDEBAR);
+      commit(types.TOGGLE_SIDEBAR)
     },
   },
   getters: {
     opened: (state) => state.opened,
   },
   plugins: [logger()],
-});
+})
 
-export default store;
+export default store
